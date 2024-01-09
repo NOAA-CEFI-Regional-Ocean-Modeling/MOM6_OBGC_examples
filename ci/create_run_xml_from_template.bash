@@ -109,7 +109,7 @@ fi
 
 # run frerun and submit a RT test for NWA12-RT case
 echo "run frerun and submit a NWA12-RT case"
-frerun -o -x ocean_ice_cobalt_experiments.xml -p ncrc5.intel22 -q debug -r NWA12_RT -t repro NWA12_COBALT_V1
+frerun --notransfer -o -x ocean_ice_cobalt_experiments.xml -p ncrc5.intel22 -q debug -r NWA12_RT -t repro NWA12_COBALT_V1
 rt_jobid=$(sbatch --parsable /lustre/f2/dev/Yi-cheng.Teng/github/cefi_regression_${CURRENT_DATE}/NWA12_COBALT_V1/ncrc5.intel22-repro/scripts/run/NWA12_COBALT_V1_1x0m2d_1646x1o | awk -F';' '{print $1}' | cut -f1)
 echo "Submitted RT job with ID: $rt_jobid"
 
