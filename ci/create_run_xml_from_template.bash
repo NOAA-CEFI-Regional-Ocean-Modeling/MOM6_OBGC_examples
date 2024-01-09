@@ -159,3 +159,4 @@ fi
 
 # Final clean-up
 rm -rf /lustre/f2/scratch/Yi-cheng.Teng/work/github/cefi_regression_${CURRENT_DATE}
+rm -rf /lustre/f2/dev/Yi-cheng.Teng/github/cefi_regression_${CURRENT_DATE}
