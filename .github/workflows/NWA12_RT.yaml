@@ -25,8 +25,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Repository
         uses: actions/checkout@v3
-        with:
-          submodules: recursive
 
       # Run create_run_xml_from_template.bash 
       - name: create and run FRE xml
