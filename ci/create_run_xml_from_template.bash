@@ -52,11 +52,7 @@ cat ocean_ice_cobalt_experiments.template.xml | sed -e "s/<FMS_GIT_HASH>/$hash_F
 					            -e "s/<CURRENT_DATE>/$CURRENT_DATE/g" \
                                                     > ocean_ice_cobalt_experiments.xml
 
-
-# -- clean up tmp folders or runs from previos runs
-echo "remove MOM6_OBGC_examples folder"
-rm -rf MOM6_OBGC_examples
-
+# --- clean up workdir if it exists
 workflow_directory="/lustre/f2/dev/Yi-cheng.Teng/github/cefi_NWA12_regression_${CURRENT_DATE}"
 # Check if the directory exists
 if [ -d "$workflow_directory" ]; then
