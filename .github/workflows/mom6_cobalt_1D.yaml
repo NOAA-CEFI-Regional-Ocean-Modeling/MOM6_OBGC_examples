@@ -27,7 +27,7 @@ jobs:
 #    - name: Login to DockerHub Registry
 #      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
-    - name: Build Docker Image
+    - name: Build mom6_obgc 1D Docker Image
       run: |
         echo "maximize disk space on git-runner ..."
         df -h 
@@ -39,7 +39,7 @@ jobs:
         echo "docker image build ..."
         docker build --file "./tests/Dockerfile.ci" -t mom6_obgc_1d:develop .
         
-    - name: Check Docker Image
+    - name: Check mom6_obgc 1D Docker Image build
       run: | 
        docker images 
        if [[ $(docker image inspect mom6_obgc_1d:develop) ]]; then
