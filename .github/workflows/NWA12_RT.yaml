@@ -26,13 +26,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-
-      - name: Generate a token
-        id: generate_token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: yichengt900
-          private-key: ${{ secrets.GITHUB_TOKEN }}
     
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Repository
@@ -48,7 +41,7 @@ jobs:
       - name: Add "pass_NWA12_RT" label on success
         if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
         run: |
-          TOKEN=${{ steps.generate_token.outputs.token }}
+          TOKEN=${{ secrets..GITHUB_TOKEN }}
           RT_TEST_LABEL="NWA12_RT_gaea_c5"
           PASS_LABEL="pass_NWA12_RT"
           echo "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels" \
