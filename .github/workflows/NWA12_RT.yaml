@@ -31,7 +31,6 @@ jobs:
         id: generate_token
         uses: actions/create-github-app-token@v1
         with:
-          app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.CEFI_TOKEN }}
     
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
