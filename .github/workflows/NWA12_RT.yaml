@@ -23,6 +23,7 @@ jobs:
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR_NUMBER: ${{ github.event.number }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,9 +42,9 @@ jobs:
         if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
         run: |
           TOKEN=$GITHUB_TOKEN
-          PR_NUMBER=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
           RT_TEST_LABEL="NWA12_RT_gaea_c5"
           PASS_LABEL="pass_NWA12_RT"
+          echo "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels/$RT_TEST_LABEL"
 
           # Remove the "NWA12_RT_gaea_c5" label
           #curl -X DELETE \
