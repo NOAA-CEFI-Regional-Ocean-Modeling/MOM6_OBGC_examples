@@ -17,8 +17,7 @@ jobs:
   # This workflow contains a single job called "NWA12_RT_run"
   NWA12_RT_run:
     # run RT only when label 'NWA12_RT_gaea_c5' is on
-    #if: ${{ github.event.label.name == 'NWA12_RT_gaea_c5' }}
-    if: contains(github.event.pull_request.labels.*.name, 'NWA12_RT_gaea_c5')
+    if: ${{ github.event.label.name == 'NWA12_RT_gaea_c5' }}
     # The type of runner that the job will run on
     runs-on: self-hosted
 
