@@ -32,7 +32,7 @@ jobs:
         uses: actions/create-github-app-token@v1
         with:
           app-id: yichengt900
-          private-key: ${{ secrets.CEFI_TOKEN }}
+          private-key: ${{ secrets.GITHUB_TOKEN }}
     
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Repository
