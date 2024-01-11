@@ -37,7 +37,7 @@ jobs:
       - name: Remove "NWA12_RT_gaea_c5" label and add "pass_NWA12_RT" label on success
         if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
         run: |
-          TOKEN=$GITHUB_TOKEN
+          TOKEN=$CEFI_TOKEN
           PR_NUMBER=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
           RT_TEST_LABEL="NWA12_RT_gaea_c5"
           PASS_LABEL="pass_NWA12_RT"
