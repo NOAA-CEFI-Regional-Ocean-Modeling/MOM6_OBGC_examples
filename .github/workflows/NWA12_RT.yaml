@@ -34,10 +34,18 @@ jobs:
           cd ci
           #bash create_run_xml_from_template.bash 
 
-      - name: Remove "NWA12_RT_gaea_c5" label and add "pass_NWA12_RT" label on success
+      - name: Remove "NWA12_RT_gaea_c5" label
         if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
         uses: buildsville/add-remove-label@v2.0.1
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          labels: pass_NWA12_RT
+          labels: NWA12_RT_gaea_c5
           type: remove
+
+      - name: Add "pass_NWA12_RT" label on success
+        if: success()
+        uses: buildsville/add-remove-label@v2.0.1
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          labels: pass_NWA12_RT
+          type: add          
