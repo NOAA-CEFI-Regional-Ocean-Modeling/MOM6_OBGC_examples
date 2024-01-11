@@ -21,11 +21,11 @@ jobs:
       with:
         submodules: recursive
         
-#    - uses: jitterbit/get-changed-files@v1
-#      id: abc
-#      with:
-#        format: space-delimited
-#        token: ${{ secrets.GITHUB_TOKEN }}        
+    - uses: jitterbit/get-changed-files@v1
+      id: abc
+      with:
+        format: space-delimited
+        token: ${{ secrets.GITHUB_TOKEN }}        
           
 #    - name: Login to DockerHub Registry
 #      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
@@ -52,18 +52,18 @@ jobs:
             exit 1
        fi
 
-      - name: Add "NWA12_RT_gaea_c5" label on success
-        if: success()
-        run: |
-          TOKEN=${{ secrets.GITHUB_TOKEN }}
-          RT_TEST_LABEL="NWA12_RT_gaea_c5"
+    - name: Add "NWA12_RT_gaea_c5" label on success
+      if: success()
+      run: |
+        TOKEN=${{ secrets.GITHUB_TOKEN }}
+        RT_TEST_LABEL="NWA12_RT_gaea_c5"
 
-          # Add the "NWA12_RT_gaea_c5" label
-          curl -X POST \
-            -H "Authorization: Bearer $TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels" \
-            -d "{\"labels\":[\"$RT_TEST_LABEL\"]}"
+        # Add the "NWA12_RT_gaea_c5" label
+        curl -X POST \
+          -H "Authorization: Bearer $TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels" \
+          -d "{\"labels\":[\"$RT_TEST_LABEL\"]}"
 
 #    - name: Docker Logout
 #      run: |
