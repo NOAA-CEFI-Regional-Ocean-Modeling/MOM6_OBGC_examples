@@ -49,6 +49,20 @@ jobs:
             exit 1
        fi
 
+      - name: Add "NWA12_RT_gaea_c5" label on success
+        if: success()
+        run: |
+          TOKEN=${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.number }}
+          RT_TEST_LABEL="NWA12_RT_gaea_c5"
+
+          # Add the "NWA12_RT_gaea_c5" label
+          curl -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels" \
+            -d "{\"labels\":[\"$RT_TEST_LABEL\"]}"
+
 #    - name: Docker Logout
 #      run: |
 #       docker logout   
