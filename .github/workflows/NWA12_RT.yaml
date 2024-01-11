@@ -21,6 +21,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: self-hosted
 
+    env:
+      MY_SECRET_KEY: ${{ secrets.CEFI_TOKEN }}
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -37,7 +40,7 @@ jobs:
       - name: Remove "NWA12_RT_gaea_c5" label and add "pass_NWA12_RT" label on success
         if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
         run: |
-          TOKEN='${{ secrets.CEFI_TOKEN }}'
+          TOKEN=$MY_SECRET_KEY
           PR_NUMBER=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
           RT_TEST_LABEL="NWA12_RT_gaea_c5"
           PASS_LABEL="pass_NWA12_RT"
