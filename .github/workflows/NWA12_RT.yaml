@@ -41,7 +41,7 @@ jobs:
       - name: Add "pass_NWA12_RT" label on success
         if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
         run: |
-          TOKEN=${{ secrets..GITHUB_TOKEN }}
+          TOKEN=${{ secrets.GITHUB_TOKEN }}
           RT_TEST_LABEL="NWA12_RT_gaea_c5"
           PASS_LABEL="pass_NWA12_RT"
           echo "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels" \
