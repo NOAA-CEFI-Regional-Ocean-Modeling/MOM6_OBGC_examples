@@ -34,18 +34,17 @@ jobs:
           cd ci
           #bash create_run_xml_from_template.bash 
 
-      - name: Remove "NWA12_RT_gaea_c5" label
+      - name: Remove "NWA12_RT_gaea_c5" label and add "pass_NWA12_RT" label on success
         if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
-        uses: buildsville/add-remove-label@v2.0.1
-        with:
-          token: ${{secrets.GITHUB_TOKEN}}
-          labels: NWA12_RT_gaea_c5
-          type: remove
+        run: |
+          TOKEN=${{ secrets.CEGI_TOKEN }}
+          PR_NUMBER=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
+          RT_TEST_LABEL="NWA12_RT_gaea_c5"
+          PASS_LABEL="pass_NWA12_RT"
 
-      - name: Add "pass_NWA12_RT" label on success
-        if: success()
-        uses: buildsville/add-remove-label@v2.0.1
-        with:
-          token: ${{secrets.GITHUB_TOKEN}}
-          labels: pass_NWA12_RT
-          type: add          
+          # Remove the "RT_test" label
+          curl -X DELETE \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels/$RT_TEST_LABEL"
+    
