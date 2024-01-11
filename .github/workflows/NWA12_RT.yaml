@@ -47,6 +47,13 @@ jobs:
           echo "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels" \
             -d "{\"labels\":[\"$PASS_LABEL\"]}"
 
+          # Remove the "NWA12_RT_gaea_c5" label
+          curl -X DELETE \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels/$RT_TEST_LABEL"
+    
+
           # Add the "pass_NWA12_RT" label
           curl -X POST \
             -H "Authorization: Bearer $TOKEN" \
