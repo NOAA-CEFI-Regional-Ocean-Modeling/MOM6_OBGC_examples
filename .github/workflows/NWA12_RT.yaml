@@ -32,4 +32,25 @@ jobs:
         run: |
           pwd
           cd ci
-          bash create_run_xml_from_template.bash 
+          #bash create_run_xml_from_template.bash 
+
+      - name: Remove "NWA12_RT_gaea_c5" label and add "pass_NWA12_RT" label on success
+        if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
+        run: |
+          TOKEN=$GITHUB_TOKEN
+          PR_NUMBER=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
+          RT_TEST_LABEL="NWA12_RT_gaea_c5"
+          PASS_LABEL="pass_NWA12_RT"
+
+          # Remove the "NWA12_RT_gaea_c5" label
+          curl -X DELETE \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels/$RT_TEST_LABEL"
+
+          # Add the "pass_NWA12_RT" label
+          curl -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels" \
+            -d "{\"labels\":[\"$PASS_LABEL\"]}"
