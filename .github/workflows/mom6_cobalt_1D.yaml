@@ -54,9 +54,9 @@ jobs:
       if: success()
       run: |
         TOKEN=${{ secrets.GITHUB_TOKEN }}
-        RT_TEST_LABEL="NWA12_RT_gaea_c5"
+        RT_TEST_LABEL="pass_1d_test"
 
-        # Add the "NWA12_RT_gaea_c5" label
+        # Add the "pass_1d_test" label
         curl -X POST \
           -H "Authorization: Bearer $TOKEN" \
           -H "Accept: application/vnd.github.v3+json" \
