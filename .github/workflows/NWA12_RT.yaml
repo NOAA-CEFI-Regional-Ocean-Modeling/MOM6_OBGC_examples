@@ -38,6 +38,6 @@ jobs:
         if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
         uses: buildsville/add-remove-label@v2.0.1
         with:
-          token: ${{secrets.CEFI_TOKEN}}
+          token: ${{secrets.GITHUB_TOKEN}}
           labels: pass_NWA12_RT
           type: remove
