@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
 
+    env:
+      PR_NUMBER: ${{ github.event.number }}
+
     steps:        
     - name: Checkout
       uses: actions/checkout@v3
@@ -53,7 +56,6 @@ jobs:
         if: success()
         run: |
           TOKEN=${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.number }}
           RT_TEST_LABEL="NWA12_RT_gaea_c5"
 
           # Add the "NWA12_RT_gaea_c5" label
