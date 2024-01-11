@@ -36,7 +36,7 @@ jobs:
         run: |
           pwd
           cd ci
-          #bash create_run_xml_from_template.bash 
+          bash create_run_xml_from_template.bash 
 
       - name: Add "pass_NWA12_RT" label on success
         if: success() && contains(github.event.label.name, 'NWA12_RT_gaea_c5')
