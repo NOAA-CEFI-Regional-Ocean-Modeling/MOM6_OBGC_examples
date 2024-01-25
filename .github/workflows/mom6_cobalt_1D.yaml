@@ -28,6 +28,18 @@ jobs:
 #    - name: Login to DockerHub Registry
 #      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
+    - name: Remove "pass_1d_test" if there is any
+      if: contains(github.event.label.name, 'pass_1d_test')
+      run: |
+        TOKEN=${{ secrets.GITHUB_TOKEN }}
+        RT_TEST_LABEL="pass_1d_test"
+
+        # Remove the "pass_1d_test" label
+        curl -X DELETE \
+          -H "Authorization: Bearer $TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels/$RT_TEST_LABEL"
+          
     - name: Build mom6_obgc 1D Docker Image
       run: |
         echo "maximize disk space on git-runner ..."
@@ -40,18 +52,6 @@ jobs:
         echo "docker image build ..."
         docker build --file "./ci/docker/Dockerfile.ci" -t mom6_obgc_1d:develop .
 
-    - name: Remove "pass_1d_test" if there is any
-      if: contains(github.event.label.name, 'pass_1d_test')
-      run: |
-        TOKEN=${{ secrets.GITHUB_TOKEN }}
-        RT_TEST_LABEL="pass_1d_test"
-
-        # Remove the "pass_1d_test" label
-        curl -X DELETE \
-          -H "Authorization: Bearer $TOKEN" \
-          -H "Accept: application/vnd.github.v3+json" \
-          "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels/$RT_TEST_LABEL"
-        
     - name: Check mom6_obgc 1D Docker Image build
       run: | 
        docker images 
