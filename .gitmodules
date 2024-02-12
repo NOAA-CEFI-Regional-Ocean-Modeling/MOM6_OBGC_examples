@@ -2,18 +2,10 @@
 	path = src/mkmf
 	url = https://github.com/NOAA-GFDL/mkmf.git
 	branch = master
-[submodule "src/icebergs"]
-	path = src/icebergs
-	url = https://github.com/NOAA-GFDL/icebergs.git
-	branch = dev/gfdl
 [submodule "src/ice_param"]
 	path = src/ice_param
 	url = https://github.com/NOAA-GFDL/ice_param.git
 	branch = 2021.03
-[submodule "src/SIS2"]
-	path = src/SIS2
-	url = https://github.com/NOAA-GFDL/SIS2.git
-	branch = dev/gfdl
 [submodule "src/ocean_BGC"]
 	path = src/ocean_BGC
 	url = https://github.com/NOAA-CEFI-Regional-Ocean-Modeling/ocean_BGC.git
@@ -37,3 +29,11 @@
 [submodule "src/atmos_null"]
 	path = src/atmos_null
 	url = https://github.com/NOAA-GFDL/atmos_null.git
+[submodule "src/icebergs"]
+	path = src/icebergs
+	url = https://github.com/NOAA-GFDL/icebergs.git
+	branch = dev/gfdl
+[submodule "src/SIS2"]
+	path = src/SIS2
+	url = https://github.com/NOAA-GFDL/SIS2.git
+	branch = dev/gfdl
