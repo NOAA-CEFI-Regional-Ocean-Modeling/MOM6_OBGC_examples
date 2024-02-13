@@ -17,7 +17,7 @@ Make the executable for cefi ocean-ice-cobalt experiments.
       </compile>
     </component>
 
-    <component name="mom6" requires="fms" paths="MOM6/config_src/memory/dynamic_symmetric MOM6/config_src/drivers/FMS_cap MOM6/src/*/ MOM6/src/*/*/ MOM6/config_src/external/ODA_hooks MOM6/config_src/external/stochastic_physics MOM6/config_src/external/drifters MOM6/config_src/external/database_comms ocean_BGC/generic_tracers ocean_BGC/mocsy/src MOM6/pkg/GSW-Fortran/modules MOM6/pkg/GSW-Fortran/toolbox MOM6/config_src/infra/FMS1">
+    <component name="mom6" requires="fms" paths="MOM6/config_src/memory/dynamic_symmetric MOM6/config_src/drivers/FMS_cap MOM6/src/*/ MOM6/src/*/*/ MOM6/config_src/external/ODA_hooks MOM6/config_src/external/stochastic_physics MOM6/config_src/external/drifters MOM6/config_src/external/database_comms ocean_BGC/generic_tracers ocean_BGC/mocsy/src MOM6/pkg/GSW-Fortran/modules MOM6/pkg/GSW-Fortran/toolbox MOM6/config_src/infra/FMS2">
       <description domainName="Ocean" communityName="GFDL-MOM6" communityVersion="dev/cefi" communityGrid="regional"/>
        <source versionControl="git" root="$(MOM6_SUBMODULE_URL)">
         <codeBase version="$(MOM6_BRANCH_NAME)"> MOM6.git </codeBase>
@@ -33,11 +33,11 @@ Make the executable for cefi ocean-ice-cobalt experiments.
        ]]></csh>
       </source>
       <compile>
-        <cppDefs><![CDATA[ $(F2003_FLAGS) -DMAX_FIELDS_=100 -DNOT_SET_AFFINITY -D_USE_MOM6_DIAG -D_USE_GENERIC_TRACER  -DUSE_PRECISION=2 -D_FILE_VERSION="'"`git-version-string $<`"'" ]]></cppDefs>
+        <cppDefs><![CDATA[ $(F2003_FLAGS) -DUSE_FMS2_IO -DMAX_FIELDS_=100 -DNOT_SET_AFFINITY -D_USE_MOM6_DIAG -D_USE_GENERIC_TRACER  -DUSE_PRECISION=2 -D_FILE_VERSION="'"`git-version-string $<`"'" ]]></cppDefs>
       </compile>
     </component>
       
-    <component name="sis2" paths="SIS2/config_src/dynamic_symmetric SIS2/config_src/external/Icepack_interfaces SIS2/src icebergs ice_param" requires="fms mom6" includeDir="$root/$(LIBS_ROOT)/src/MOM6/src/framework" >
+    <component name="sis2" paths="SIS2/config_src/dynamic_symmetric SIS2/config_src/external/Icepack_interfaces SIS2/src icebergs/src ice_param" requires="fms mom6" includeDir="$root/$(LIBS_ROOT)/src/MOM6/src/framework" >
          <source versionControl="git" root="https://github.com/NOAA-GFDL">
 	   <codeBase version="dev/gfdl"> SIS2.git </codeBase> 
            <csh><![CDATA[
@@ -47,7 +47,7 @@ Make the executable for cefi ocean-ice-cobalt experiments.
          ]]></csh>
          </source>
          <compile>
-            <cppDefs><![CDATA[$(F2003_FLAGS) -D_FILE_VERSION="'"`git-version-string $<`"'"]]></cppDefs>
+            <cppDefs><![CDATA[$(F2003_FLAGS) -DUSE_FMS2_IO -D_FILE_VERSION="'"`git-version-string $<`"'"]]></cppDefs>
          </compile>
       </component>
 
@@ -60,7 +60,10 @@ Make the executable for cefi ocean-ice-cobalt experiments.
                git checkout $(ICEBERGS_GIT_HASH)
                popd
          ]]></csh>
-         </source>
+	 </source>
+         <compile>
+            <cppDefs><![CDATA[$(F2003_FLAGS) -DUSE_FMS2_IO -D_FILE_VERSION="'"`git-version-string $<`"'"]]></cppDefs>
+         </compile>
       </component>
 
       <component name="ice_param" paths="/dev/null" requires="coupler">
