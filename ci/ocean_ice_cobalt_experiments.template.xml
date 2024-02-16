@@ -18,11 +18,10 @@ frecheck -I NWA12_COBALT_V1_1x0m2d_1646x1o,ocean_ice_cobalt_experiments.xml  -x 
 
   <property name="FRE_VERSION"     value="bronx-21"/>                      <!-- fre version to be used -->
 
-  <property name="RELEASE"       value="2022.04"/>                         <!-- git tag for general component source code-->
+  <property name="RELEASE"       value="2023.04"/>                         <!-- git tag for general component source code-->
   <property name="FMS_TAG"       value="$(RELEASE)"/>                      <!-- git tag for shared source code -->
   <property name="COUPLER_TAG"   value="$(RELEASE)"/>                      <!-- git tag for coupler source code -->
-  <property name="NULL_TAG"      value="2021.03"/>                         <!-- git tag for null source code -->
-  <property name="MOM6_DATE"     value="20230201"/>                        <!-- git tag date for MOM6 source code -->
+  <property name="NULL_TAG"      value="$(RELEASE)"/>                         <!-- git tag for null source code -->
   <property name="FRE_STEM"      value="github/cefi_NWA12_regression_<CURRENT_DATE>"/>  <!-- customize as needed -->
 
   <property name="FMS_GIT_HASH"      value="<FMS_GIT_HASH>"/>           <!-- git tag for FMS2 shared source code -->
