@@ -1,7 +1,3 @@
-[submodule "src/mkmf"]
-	path = src/mkmf
-	url = https://github.com/NOAA-GFDL/mkmf.git
-	branch = master
 [submodule "src/ice_param"]
 	path = src/ice_param
 	url = https://github.com/NOAA-GFDL/ice_param.git
@@ -9,10 +5,6 @@
 [submodule "src/ocean_BGC"]
 	path = src/ocean_BGC
 	url = https://github.com/NOAA-CEFI-Regional-Ocean-Modeling/ocean_BGC.git
-	branch = dev/cefi
-[submodule "src/MOM6"]
-	path = src/MOM6
-	url = https://github.com/NOAA-CEFI-Regional-Ocean-Modeling/MOM6.git
 	branch = dev/cefi
 [submodule "src/FMS"]
 	path = src/FMS
@@ -37,3 +29,11 @@
 	path = src/SIS2
 	url = https://github.com/NOAA-GFDL/SIS2.git
 	branch = dev/gfdl
+[submodule "src/MOM6"]
+	path = src/MOM6
+	url = https://github.com/NOAA-CEFI-Regional-Ocean-Modeling/MOM6.git
+	branch = dev/cefi
+[submodule "src/mkmf"]
+	path = src/mkmf
+	url = https://github.com/NOAA-GFDL/mkmf.git
+	branch = master
