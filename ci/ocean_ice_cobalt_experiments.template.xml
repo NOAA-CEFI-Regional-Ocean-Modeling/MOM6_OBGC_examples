@@ -142,7 +142,8 @@ frecheck -I NWA12_COBALT_V1_1x0m2d_1646x1o,ocean_ice_cobalt_experiments.xml  -x 
         domains_stack_size = 8000000
         stack_size =0
       </namelist>
-      <namelist name="fms_io_nml"> 
+      <namelist name="fms2_io_nml">
+	netcdf_default_format = "netcdf4"      
         fms_netcdf_restart=.true. 
         threading_read='multi'
         max_files_r = 800
@@ -512,7 +513,7 @@ MOM_OVERRIDE_EOF
           </resources>
         </run>	      
       </regression>
-      <reference restart="$(ACR)/reference/NWA12_RT/1x0m2d_1646x1o/restart/19930103.tar"/>
+      <reference restart="$(ACR)/reference/NWA12_RT/2023.04/1x0m2d_1646x1o/restart/19930103.tar"/>
     </runtime>
 
     <postProcess>
