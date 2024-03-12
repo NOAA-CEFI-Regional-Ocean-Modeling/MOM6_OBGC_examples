@@ -18,7 +18,7 @@ Make the executable for cefi ocean-ice-cobalt experiments.
     </component>
 
     <component name="mom6" requires="fms" paths="MOM6/config_src/memory/dynamic_symmetric MOM6/config_src/drivers/FMS_cap MOM6/src/*/ MOM6/src/*/*/ MOM6/config_src/external/ODA_hooks MOM6/config_src/external/stochastic_physics MOM6/config_src/external/drifters MOM6/config_src/external/database_comms ocean_BGC/generic_tracers ocean_BGC/mocsy/src MOM6/pkg/GSW-Fortran/modules MOM6/pkg/GSW-Fortran/toolbox MOM6/config_src/infra/FMS1">
-      <description domainName="Ocean" communityName="GFDL-MOM6" communityVersion="dev/cefi" communityGrid="regional"/>
+      <description domainName="Ocean" communityName="GFDL-MOM6" communityVersion="cefi" communityGrid="regional"/>
        <source versionControl="git" root="$(MOM6_SUBMODULE_URL)">
         <codeBase version="$(MOM6_BRANCH_NAME)"> MOM6.git </codeBase>
         <csh><![CDATA[

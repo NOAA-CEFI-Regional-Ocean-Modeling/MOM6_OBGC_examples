@@ -22,7 +22,6 @@ frecheck -I NWA12_COBALT_V1_1x0m2d_1646x1o,ocean_ice_cobalt_experiments.xml  -x 
   <property name="FMS_TAG"       value="$(RELEASE)"/>                      <!-- git tag for shared source code -->
   <property name="COUPLER_TAG"   value="$(RELEASE)"/>                      <!-- git tag for coupler source code -->
   <property name="NULL_TAG"      value="2021.03"/>                         <!-- git tag for null source code -->
-  <property name="MOM6_DATE"     value="20230201"/>                        <!-- git tag date for MOM6 source code -->
   <property name="FRE_STEM"      value="github/cefi_NWA12_regression_<CURRENT_DATE>"/>  <!-- customize as needed -->
 
   <property name="FMS_GIT_HASH"      value="<FMS_GIT_HASH>"/>           <!-- git tag for FMS2 shared source code -->
@@ -42,7 +41,7 @@ frecheck -I NWA12_COBALT_V1_1x0m2d_1646x1o,ocean_ice_cobalt_experiments.xml  -x 
   <property name="OBGC_BRANCH_NAME"      value="<OBGC_BRANCH_NAME>"/>   <!-- git branch for OBGC source code -->
 
   <!-- Please make sure to change "YOURGROUPLETTER" to your group, such as b, f, g, m, o... -->
-	  <property name="NCRC_GROUP"     value="<ACCOUNT>"/><!-- Replace YOURGROUPLETTER with GFDL group letter -->
+  <property name="NCRC_GROUP"     value="<ACCOUNT>"/><!-- Replace YOURGROUPLETTER with GFDL group letter -->
   <!--Production run properties. Users can modify these according to their need and/or performance analysis-->
   <property name="PROD_SIMTIME"   value="1"/>
 
@@ -464,7 +463,7 @@ DT_OBC_SEG_UPDATE_OBGC = 3600
 #override CHL_FROM_FILE = False
 #override DO_GEOTHERMAL = True
 #override GENERIC_TRACER_IC_FILE = "NWA12_COBALT_2023_10_spinup_2003.nc"
-#override EPBL_ANSWER_DATE = 20231231
+!#override EPBL_ANSWER_DATE = 20231231
 MOM_OVERRIDE_EOF
         ]]>
       </csh>
