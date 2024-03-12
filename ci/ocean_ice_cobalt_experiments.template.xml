@@ -477,7 +477,7 @@ MOM_OVERRIDE_EOF
         </resources>
       </production>
       <regression name="NWA12_RT">
-        <run days="2">
+        <run days="3">
           <resources jobWallclock="01:00:00">
             <ice                          layout = "50,50" io_layout = "1,1" mask_table="mask_table.854.50x50"/>
             <ocn ranks="1646" threads="1" layout = "50,50" io_layout = "1,1" mask_table="mask_table.854.50x50"/>
@@ -512,7 +512,7 @@ MOM_OVERRIDE_EOF
           </resources>
         </run>	      
       </regression>
-      <reference restart="$(ACR)/reference/NWA12_RT/stable/<TARGET>/1x0m2d_1646x1o/restart/19930103.tar"/>
+      <reference restart="$(ACR)/reference/NWA12_RT/stable/3day/<TARGET>/1x0m3d_1646x1o/restart/19930104.tar"/>
     </runtime>
 
     <postProcess>
